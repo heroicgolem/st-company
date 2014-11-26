@@ -1,0 +1,179 @@
+<% content_for :head do %>
+  <script>
+  
+    $(function() {
+      $(".datepicker").datepicker({
+          dateFormat: 'yy-mm-dd'
+        });
+      }); 
+  </script>
+<% end %>
+<div class="container">
+  <div class="container banner_list">
+    <h1>배너 리스트</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>번호</th>
+          <th>제목</th>
+          <th>신청자</th>
+          <th>요청부서</th>
+          <th>배너 페이지</th>
+          <th>배너위치</th>
+          <th>시작일시</th>
+          <th>종료일시</th>
+          <th>링크</th>
+          <th>서비스팀 확인</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @banners.each do |banner| %>
+          <tr>
+            <td><%= banner.id %></td>
+            <td><%= banner.title %></td>
+            <td><%= banner.requester %></td>
+            <td><%= banner.banner_division.name %></td>
+            <td><%= banner.banner_position.parent_name %></td>
+            <td><%= banner.banner_position.name %></td>
+            <td><%= banner.start_date.strftime("%Y-%m-%d") rescue '-' %></td>
+            <td><%= banner.end_date.strftime("%Y-%m-%d") rescue '-'%></td>
+            <td><%= banner.target_link %></td>
+            <td>
+            <% if banner.service_confirm? %> 
+              <%= link_to '노출', service_confirm_update_banner_path(banner), :class=>"btn btn-success btn-xs" %>
+            <% else %> 
+              <%= link_to '비노출', service_confirm_update_banner_path(banner), :class=>"btn btn-warning btn-xs" %>
+            <% end %>    
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <div class="center">
+      <%= will_paginate @banners, renderer: BootstrapPagination::Rails %>  
+    </div>
+    <%= link_to 'new', new_banner_path, :class=>"btn btn-default" %>
+  </div>
+
+  <div class="container banner_calendar">
+    <div class="calendar">
+      <%= text_field 'date', '', :class=>"datepicker form-control" %>
+      <%= link_to '해당 일자 배너 확인', '', :class=>"btn btn-primary" %>
+    </div>
+    <div class="pages_area">
+      <div class="main_page float">
+<% #메인 페이지 %> 
+        <h3>메인 페이지</h3>
+        <div class="row">
+          <div class="col-md-6 alert alert-warning">빅배너</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2 alert alert-success">그리드1</div>
+          <div class="col-md-2 alert alert-success">그리드2</div>
+          <div class="col-md-2 alert alert-success">그리드3</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 alert alert-warning">그리드4</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2 alert alert-success">그리드5</div>
+          <div class="col-md-2 alert alert-success">그리드6</div>
+          <div class="col-md-2 alert alert-success">그리드7</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 alert alert-warning">그리드8</div>
+          <div class="col-md-3 alert alert-warning">그리드9</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2 alert alert-success">그리드10</div>
+          <div class="col-md-2 alert alert-success">그리드11</div>
+          <div class="col-md-2 alert alert-success">그리드12</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 alert alert-warning">그리드13</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2 alert alert-success">그리드14</div>
+          <div class="col-md-2 alert alert-success">그리드15</div>
+          <div class="col-md-2 alert alert-success">그리드16</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 alert alert-warning">그리드17</div>
+          <div class="col-md-3 alert alert-warning">그리드18</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 alert alert-warning">그리드19</div>
+        </div>
+        
+      </div> 
+
+<% #선생님 페이지 %> 
+      <div class="teacher_page float">
+        <h3>선생님 페이지</h3>
+        <div class="row">
+          <div class="col-md-6 alert alert-warning">빅배너</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2 alert alert-success">그리드1</div>
+          <div class="col-md-2 alert alert-success">그리드2</div>
+          <div class="col-md-2 alert alert-success">그리드3</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 alert alert-warning">그리드4</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2 alert alert-success">그리드5</div>
+          <div class="col-md-2 alert alert-success">그리드6</div>
+          <div class="col-md-2 alert alert-success">그리드7</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 alert alert-warning">그리드8</div>
+          <div class="col-md-3 alert alert-warning">그리드9</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2 alert alert-success">그리드10</div>
+          <div class="col-md-2 alert alert-success">그리드11</div>
+          <div class="col-md-2 alert alert-success">그리드12</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 alert alert-warning">그리드13</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-2 alert alert-success">그리드14</div>
+          <div class="col-md-2 alert alert-success">그리드15</div>
+          <div class="col-md-2 alert alert-success">그리드16</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 alert alert-warning">그리드17</div>
+          <div class="col-md-3 alert alert-warning">그리드18</div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 alert alert-warning">그리드19</div>
+        </div>
+        
+      </div> 
+    </div>
+  </div>
+    
+    
+  </div>
+
+</div>

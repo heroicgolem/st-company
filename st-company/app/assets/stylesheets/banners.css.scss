@@ -1,0 +1,36 @@
+// Place all the styles related to the Banners controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* banner_list css */
+div.banner_list {
+  width: 1000px;
+  table tr th, table tr td {
+    text-align: center;
+  }
+  .btn:last-of-type {
+    float:right;
+  }
+  .center {
+    text-align: center;
+  }
+}
+div.banner_calendar {
+  width: 1000px;
+  .row {
+    div {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+  }
+}
+
+
+/* banner_new css */
+div.banner_new {
+  width: 500px;
+  .form-group:last-of-type {
+    float:right;
+  }
+}
+

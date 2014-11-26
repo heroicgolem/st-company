@@ -1,0 +1,66 @@
+<% content_for :head do %>
+  <script>
+  
+    $(function() {
+      $(".datepicker").datepicker({
+          dateFormat: 'yy-mm-dd 00:00:00'
+        });
+      }); 
+  </script>
+<% end %>
+
+<% if @banner.errors.full_messages.any? %>
+  <% @banner.errors.full_messages.each do |error_message| %>
+    <%= error_message if @banner.errors.full_messages.first == error_message %> <br />
+  <% end %>
+<% end %>
+<div class="row">
+  <%= form_for(@banner) do |f| %>
+    <div class="form-group">
+      <%= f.label :title %><br>
+      <%= f.text_field :title, :class =>"form-control" %>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :requester %><br>
+      <%= f.text_field :requester, :class =>"form-control" %>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :banner_division_id %><br>
+      <%= f.select(:banner_division_id, options_for_select(BannerDivision.all.collect{|c| [c.name, c.id]}),{}, {:class=>"form-control"}) %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :banner_position_id %><br>
+      <%= f.select(:banner_position_id, options_for_select(@position.collect {|c| [c.name_with_parentname, c.id]}), {}, {:class=>"form-control"}) %>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :start_date %><br>
+      <%= f.text_field :start_date, :class =>"form-control datepicker" %>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :end_date %><br>
+      <%= f.text_field :end_date, :class =>"form-control datepicker" %>
+    </div>
+  
+    <div class="form-group">
+      <%= f.label :target_link %><br>
+      <%= f.text_field :target_link, :class =>"form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description %><br>
+      <%= f.text_area :description, :rows => 10, :class =>"form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= link_to '목록으로', banners_path, :class=>"btn btn-default" %>   
+      <%= f.submit :class =>"btn btn-default" %>
+    </div>
+
+  <% end %>
+</div>
+
