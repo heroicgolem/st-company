@@ -1,0 +1,25 @@
+// Place all the styles related to the BannerPositions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+//
+
+div.banner_position_list {
+  width: 1000px;
+  table tr th, table tr td {
+    text-align: center;
+  }
+  .action_group {
+    float:right;
+  }
+  .center {
+    text-align: center;
+  }
+}
+
+
+div.banner_position_new {
+  width: 500px;
+  .form-group:last-of-type {
+    float:right;
+  }
+}

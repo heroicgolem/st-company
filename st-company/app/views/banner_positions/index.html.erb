@@ -1,0 +1,40 @@
+<div class="container banner_position_list">
+
+  <h1>배너 포지션</h1>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>번호</th>
+        <th>상위 카테고리</th>
+        <th>제목</th>
+        <th>등록일시</th>
+        <th>수정/삭제</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @positions.each do |position| %>
+        <tr>
+          <td><%= position.id %></td>
+          <td><%= position.parent_name rescue '-' %></td>
+          <td><%= position.name %></td>
+          <td><%= position.created_at.strftime("%Y-%m-%d") rescue '-' %></td>
+          <td>
+            <%= link_to '수정', edit_banner_position_path(position), :class => "btn btn-success btn-xs" %>
+            <%= link_to '삭제', banner_position_path(position, :page => params[:page]), method: :delete, data: {:confirm => "삭제하시겠습니까?"}, :class => "btn btn-warning btn-xs" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <div class="center">
+    <%= will_paginate @positions, renderer: BootstrapPagination::Rails %>  
+  </div>
+
+   <div class="action_group">
+    <%= link_to 'new', new_banner_position_path, :class=>"btn btn-default" %>
+  </div>
+
+
+
+</div>

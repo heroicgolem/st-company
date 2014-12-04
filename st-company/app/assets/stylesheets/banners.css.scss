@@ -2,28 +2,50 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 /* banner_list css */
 div.banner_list {
-  width: 1000px;
+  width: 1500px;
   table tr th, table tr td {
     text-align: center;
   }
-  .btn:last-of-type {
+  .action_group {
     float:right;
   }
   .center {
     text-align: center;
   }
+  .search_form {
+    input[type="text"], select {
+      width: 20%;
+      display: inline;
+    
+    }
+  }
 }
-div.banner_calendar {
-  width: 1000px;
+
+/* banner_daily_board css */
+div.banner_daily_board {
+  
+  input {
+    width: 200px;
+  }
   .row {
     div {
       margin-top: 5px;
       margin-bottom: 5px;
+      text-align: center;
     }
   }
 }
+
+/* active_banners css */
+div.active_banners {
+  input {
+    width: 200px;
+  }
+}
+
 
 
 /* banner_new css */

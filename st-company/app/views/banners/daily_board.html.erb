@@ -1,0 +1,303 @@
+<script>
+
+  $(function() {
+    $(".datepicker").datepicker({
+        dateFormat: 'yy-mm-dd'
+      });
+    }); 
+</script>
+
+<div class="container banner_daily_board">
+  <h1>배너 달력</h1>
+  <div class="daily_board">
+    <div class="form-group">
+      <%= form_tag("", method: "get") do %>
+        <%= text_field_tag(:date, value=@date, class: 'form-control datepicker') %>
+        <%= submit_tag('해당 일자 배너 확인', class: 'btn btn-primary') %>
+        <%= link_to '목록으로', banners_path, :class=>"btn btn-default" %>   
+      <% end %>
+    </div>
+    <div class="container">
+      <h3>그리드 설명</h1>
+      <div class="row">
+        <div class="col-md-2 alert alert-success">배너 사용못함</div>
+        <div class="col-md-2 alert alert-warning">등록 가능</div>
+        <div class="col-md-2 alert alert-info">사용 중</div>
+      </div>
+     
+    </div>
+           
+  </div>
+  <div class="pages_area container">
+    <% #메인 페이지 시작 %> 
+    <div class="main_page float">
+      <h3>메인 페이지</h3>
+      <div class="row">
+        <% if @Main_Top_banners.blank? %>
+          <div class="col-md-6 alert alert-warning"> 배너 스케쥴 없음</div>   
+        <% else %>
+          <div class="col-md-6 alert alert-info">
+          <% @Main_Top_banners.each do |b| %>
+            <%= b.title %><br>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 alert alert-success">그리드1</div>
+        <div class="col-md-2 alert alert-success">그리드2</div>
+        <div class="col-md-2 alert alert-success">그리드3</div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 alert alert-success">그리드4</div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 alert alert-success">그리드5</div>
+        <div class="col-md-2 alert alert-success">그리드6</div>
+        <div class="col-md-2 alert alert-success">그리드7</div>
+      </div>
+
+      <div class="row">
+        <% if @Main_Mid_left_banners.blank? %>
+          <div class="col-md-3 alert alert-warning"> 배너 스케쥴 없음</div>   
+        <% else %>
+          <div class="col-md-3 alert alert-info">
+          <% @Main_Mid_left_banners.each do |b| %>
+            <%= b.title %><br>
+          <% end %>
+          </div>
+        <% end %>
+
+
+        <% if @Main_Mid_right_banners.blank? %>
+          <div class="col-md-3 alert alert-warning"> 배너 스케쥴 없음</div>   
+        <% else %>
+          <div class="col-md-3 alert alert-info">
+          <% @Main_Mid_right_banners.each do |b| %>
+            <%= b.title %><br>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 alert alert-success">그리드10</div>
+        <div class="col-md-2 alert alert-success">그리드11</div>
+        <div class="col-md-2 alert alert-success">그리드12</div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 alert alert-success">그리드13</div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-2 alert alert-success">그리드14</div>
+        <div class="col-md-2 alert alert-success">그리드15</div>
+        <div class="col-md-2 alert alert-success">그리드16</div>
+      </div>
+
+      <div class="row">
+        <% if @Main_Bottom_left_banners.blank? %>
+          <div class="col-md-3 alert alert-warning"> 배너 스케쥴 없음</div>   
+        <% else %>
+          <div class="col-md-3 alert alert-info">
+          <% @Main_Bottom_left_banners.each do |b| %>
+            <%= b.title %><br>
+          <% end %>
+          </div>
+        <% end %>
+
+
+        <% if @Main_Bottom_right_banners.blank? %>
+          <div class="col-md-3 alert alert-warning"> 배너 스케쥴 없음</div>   
+        <% else %>
+          <div class="col-md-3 alert alert-info">
+          <% @Main_Bottom_right_banners.each do |b| %>
+            <%= b.title %><br>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 alert alert-success">그리드19</div>
+      </div>
+      
+    </div> 
+    <% #메인 페이지 끝 %> 
+
+    <% #선생님 페이지 시작 %> 
+    <div class="teacher_page float">
+      <h3>선생님 페이지</h3>
+      <div class="row">
+        <% if @Tearch_Full_banners.blank? %>
+          <div class="col-md-6 alert alert-warning"> 배너 스케쥴 없음</div>   
+        <% else %>
+          <div class="col-md-6 alert alert-info">
+          <% @Tearch_Full_banners.each do |b| %>
+            <%= b.title %><br>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 alert alert-success">선생님 컨텐츠</div>
+      </div>
+
+    </div> 
+    <% #선생님 페이지 끝 %> 
+
+    <% #무료 강의/자료 페이지 시작 %> 
+    <div class="freebooks_page float">
+      <h3>무료 강의 자료 페이지</h3>
+      <div class="row">
+        <div class="col-md-6 alert alert-success">주간 베스트 토익 자료</div>
+      </div>
+
+      <div class="row">
+        <% if @Freebook_Mid_left_banners.blank? %>
+          <div class="col-md-3 alert alert-warning"> 배너 스케쥴 없음</div>   
+        <% else %>
+          <div class="col-md-3 alert alert-info">
+          <% @Freebook_Mid_left_banners.each do |b| %>
+            <%= b.title %><br>
+          <% end %>
+          </div>
+        <% end %>
+
+
+        <% if @Freebook_Mid_right_banners.blank? %>
+          <div class="col-md-3 alert alert-warning"> 배너 스케쥴 없음</div>   
+        <% else %>
+          <div class="col-md-3 alert alert-info">
+          <% @Freebook_Mid_right_banners.each do |b| %>
+            <%= b.title %><br>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 alert alert-success">무료 강의 / 자료 콘텐츠</div>
+      </div>
+    </div> 
+    <% #무료 강의/자료 페이지 끝 %> 
+
+    <% #학원 수강 페이지 시작 %> 
+    <div class="offline_page float">
+      <h3>학원 수강 페이지</h3>
+      <div class="row">
+        <div class="col-md-6 alert alert-success">오프 학원 소개 탭</div>
+      </div>
+
+      <div class="row">
+        <% if @Offline_Mid_left_banners.blank? %>
+          <div class="col-md-3 alert alert-warning"> 배너 스케쥴 없음</div>   
+        <% else %>
+          <div class="col-md-3 alert alert-info">
+          <% @Offline_Mid_left_banners.each do |b| %>
+            <%= b.title %><br>
+          <% end %>
+          </div>
+        <% end %>
+
+
+        <% if @Offline_Mid_right_banners.blank? %>
+          <div class="col-md-3 alert alert-warning"> 배너 스케쥴 없음</div>   
+        <% else %>
+          <div class="col-md-3 alert alert-info">
+          <% @Offline_Mid_right_banners.each do |b| %>
+            <%= b.title %><br>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 alert alert-success">오프 학원 수업 소개 탭</div>
+      </div>
+
+       <div class="row">
+        <% if @Offline_Bottom_left_banners.blank? %>
+          <div class="col-md-3 alert alert-warning"> 배너 스케쥴 없음</div>   
+        <% else %>
+          <div class="col-md-3 alert alert-info">
+          <% @Offline_Bottom_left_banners.each do |b| %>
+            <%= b.title %><br>
+          <% end %>
+          </div>
+        <% end %>
+
+
+        <% if @Offline_Bottom_right_banners.blank? %>
+          <div class="col-md-3 alert alert-warning"> 배너 스케쥴 없음</div>   
+        <% else %>
+          <div class="col-md-3 alert alert-info">
+          <% @Offline_Bottom_right_banners.each do |b| %>
+            <%= b.title %><br>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 alert alert-success">오프 학원 수업 검색 탭</div>
+      </div>
+
+    </div> 
+    <% #학원 수강 페이지 끝 %> 
+
+    <% #커뮤니티 홈 페이지 시작 %> 
+    <div class="community_page float">
+      <h3>커뮤니티 홈 페이지</h3>
+      <div class="row">
+        <% if @Community_Full_banners.blank? %>
+          <div class="col-md-6 alert alert-warning"> 배너 스케쥴 없음</div>   
+        <% else %>
+          <div class="col-md-6 alert alert-info">
+          <% @Community_Full_banners.each do |b| %>
+            <%= b.title %><br>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 alert alert-success">커뮤니티</div>
+      </div>
+
+    </div> 
+    <% #커뮤니티 홈 페이지 끝 %> 
+
+    <% #이벤트 페이지 시작 %> 
+    <div class="event_page float">
+      <h3>이벤트 페이지</h3>
+      <div class="row">
+        <% if @Event_Full_banners.blank? %>
+          <div class="col-md-6 alert alert-warning"> 배너 스케쥴 없음</div>   
+        <% else %>
+          <div class="col-md-6 alert alert-info">
+          <% @Event_Full_banners.each do |b| %>
+            <%= b.title %><br>
+          <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6 alert alert-success">커뮤니티</div>
+      </div>
+
+    </div> 
+    <% #이벤트 홈 페이지 끝 %> 
+
+
+
+  </div>
+  <% #페이지 모음 끝 %>
+
+</div>

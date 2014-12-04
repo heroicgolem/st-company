@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
+  resources :banner_positions, only: [:index, :new, :edit, :create, :destroy, :update]
+
   resources :banners do
     member do
       get 'service_confirm_update'
     end
- 
-    collection do
-      get 'banner_calendar'
+
+    collection do 
+      get 'daily_board'
+      get 'active'
     end
 
   end

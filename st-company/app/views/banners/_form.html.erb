@@ -1,18 +1,23 @@
-<% content_for :head do %>
-  <script>
-  
-    $(function() {
-      $(".datepicker").datepicker({
-          dateFormat: 'yy-mm-dd 00:00:00'
-        });
-      }); 
-  </script>
+<script>
+  $(function() {
+    $(".datepicker").datepicker({
+        dateFormat: 'yy-mm-dd 00:00:00'
+      });
+    }); 
+</script>
+
+<% if flash[:notice] %>
+	<div id="notice" class="alert alert-danger"><%= flash[:notice] %></div>
 <% end %>
 
 <% if @banner.errors.full_messages.any? %>
-  <% @banner.errors.full_messages.each do |error_message| %>
-    <%= error_message if @banner.errors.full_messages.first == error_message %> <br />
+	<div id="notice" class="alert alert-danger">
+	<% @banner.errors.full_messages.each do |error_message| %>
+    <%= error_message
+#if @banner.errors.full_messages.first == error_message
+		%> <br />
   <% end %>
+	</div>
 <% end %>
 <div class="row">
   <%= form_for(@banner) do |f| %>
